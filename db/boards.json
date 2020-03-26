@@ -1,0 +1,17 @@
+{
+	"board1": {
+		"name": "Cooking",
+		"description": "recipes for vegans",
+		"uid": "AIzaSyCXOafZsJcSZl_G-VhL2mm5CBoHd6dSDuU" 
+  },
+  "board2": {
+		"name": "Kids",
+		"description": "20 activities to do when you are quarantined at home with your two year old twins",
+		"uid": "1234"
+  },
+  "board3": {
+		"name": "Coding",
+		"description": "Coding Help 101",
+		"uid":"5678"
+	}
+}
