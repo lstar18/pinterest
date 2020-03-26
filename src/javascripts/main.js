@@ -2,6 +2,8 @@ import firebase from 'firebase/app';
 import apiKeys from './helpers/apiKeys.json';
 import authData from './helpers/data/authData/authData';
 import myNavBar from './components/myNavBar/myNavBar';
+import header from './components/home/home';
+import boardHeader from './components/boards/boards';
 import '../styles/main.scss';
 import auth from './components/auth/auth';
 
@@ -10,6 +12,8 @@ const init = () => {
   authData.checkLoginStatus();
   auth.loginButton();
   myNavBar.logoutEvent();
+  header.displayPinterest();
+  boardHeader.displayBoardHeader();
 };
 
 init();
