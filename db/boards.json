@@ -1,0 +1,22 @@
+{
+	"board1": {
+		"name": "Cooking",
+		"description": "Recipes for vegans",
+		"uid": "AIzaSyCXOafZsJcSZl_G-VhL2mm5CBoHd6dSDuU"
+	},
+	"board2": {
+		"name": "Travel",
+		"description": "Planning your dream vacation",
+		"uid": "AIzaSyCXOafZsJcSZl_G-VhL2mm5CBoHd6dSDuU"
+	},
+	"board3": {
+		"name": "DIY",
+		"description": "Projects around the house",
+		"uid": "AIzaSyCXOafZsJcSZl_G-VhL2mm5CBoHd6dSDuU"
+	},
+	"board4": {
+		"name": "Kids",
+		"description": "20 activities to do when you are quarantined at home with your two year old twins",
+		"uid": "1234"
+	}
+}
