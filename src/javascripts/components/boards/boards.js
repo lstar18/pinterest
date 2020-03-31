@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import boardData from '../../helpers/data/boardsData';
 import utils from '../../helpers/utils';
-import boardComponent from '../allBoards/allBoards';
+import boardComponent from '../allBoards/boardMaker';
 import singleBoardEvent from '../singleBoard/singleBoard';
 
 const displayBoardHeader = () => {
