@@ -16,7 +16,7 @@ const buildBoards = () => {
     .then((myBoards) => {
       let domString = '';
       domString += '<h2 class="text-center">My Boards</h2>';
-      domString += '<div class="cardBoards d-flex flex-wrap">';
+      domString += '<div class="cardBoards d-flex flex-wrap justify-content-center">';
       myBoards.forEach((board) => {
         domString += boardComponent.boardMaker(board);
       });
