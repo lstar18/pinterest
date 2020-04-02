@@ -10,6 +10,7 @@ const backToBoards = () => {
 };
 
 const buildSingleBoardView = (e) => {
+  e.preventDefault();
   const boardId = e.target.closest('.card').id;
   singleBoards.getPinsByBoardId(boardId)
     .then((singleBoard) => {
@@ -27,7 +28,7 @@ const buildSingleBoardView = (e) => {
       pinsDiv.removeClass('hide');
       boardsDiv.addClass('hide');
       utils.printToDom('singleBoardView', domString);
-      $('#back-button').on('click', backToBoards);
+      $('#back-button').click(backToBoards);
     })
     .catch((err) => console.error('problem with single board', err));
 };
