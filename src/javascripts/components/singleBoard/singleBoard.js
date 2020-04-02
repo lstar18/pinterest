@@ -1,16 +1,21 @@
 import singleBoards from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 
+// const removePins = (e) => {
+//   const pinId = e.target.closest('.card').id;
+// }
+
+
 const boardsDiv = $('#boards');
 const pinsDiv = $('#singleBoardView');
 
-const backToBoards = () => {
+const backToBoards = (e) => {
+  e.preventDefault();
   boardsDiv.removeClass('hide');
   pinsDiv.addClass('hide');
 };
 
 const buildSingleBoardView = (e) => {
-  e.preventDefault();
   const boardId = e.target.closest('.card').id;
   singleBoards.getPinsByBoardId(boardId)
     .then((singleBoard) => {
@@ -21,6 +26,7 @@ const buildSingleBoardView = (e) => {
       domString += '<h4 class="card-header"> Pins </h4>';
       singleBoard.forEach((board) => {
         domString += `<img class="image m-3" src="${board.imageUrl}">`;
+        domString += '<button class="btn btn-danger" id="delete-single-pin"></button>';
       });
       domString += '<button class="btn btn-seconardary" id="back-button"> <i class="fas fa-arrow-circle-left"></i> </button>';
       domString += '</div>';
