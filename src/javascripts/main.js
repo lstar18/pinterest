@@ -5,7 +5,6 @@ import myNavBar from './components/myNavBar/myNavBar';
 import header from './components/home/home';
 import '../styles/main.scss';
 import auth from './components/auth/auth';
-import singleBoard from './components/singleBoard/singleBoard';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -13,7 +12,6 @@ const init = () => {
   auth.loginButton();
   myNavBar.logoutEvent();
   header.displayPinterest();
-  singleBoard.buildSingleBoardView();
 };
 
 init();
