@@ -1,10 +1,10 @@
-import singleBoards from '../../helpers/data/pinData';
+import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 
 const removePins = (e) => {
   const pinId = e.target.closest('.card').id;
   const removePinBoardId = e.data;
-  singleBoards.deletePins(pinId)
+  pinData.deletePins(pinId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       buildSingleBoardView(removePinBoardId);
@@ -22,7 +22,7 @@ const backToBoards = (e) => {
 };
 
 const buildSingleBoardView = (boardId) => {
-  singleBoards.getPinsByBoardId(boardId)
+  pinData.getPinsByBoardId(boardId)
     .then((singleBoard) => {
       let domString = '';
       domString += '<h2 class="text-center">Featured Board</h2>';
