@@ -1,10 +1,10 @@
-import singleBoards from '../../helpers/data/pinData';
+import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 
 const removePins = (e) => {
   const pinId = e.target.closest('.card').id;
   const removePinBoardId = e.data;
-  singleBoards.deletePins(pinId)
+  pinData.deletePins(pinId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       buildSingleBoardView(removePinBoardId);
@@ -22,10 +22,11 @@ const backToBoards = (e) => {
 };
 
 const buildSingleBoardView = (boardId) => {
-  singleBoards.getPinsByBoardId(boardId)
+  pinData.getPinsByBoardId(boardId)
     .then((singleBoard) => {
       let domString = '';
       domString += '<h2 class="text-center">Featured Board</h2>';
+      domString += '<button class="btn btn-light" id="back-button"> <i class="fas fa-arrow-circle-left"></i> </button>';
       domString += '<div class="d-flex flex-wrap">';
       singleBoard.forEach((pin) => {
         domString += `<div class="card" id="${pin.id}">`;
@@ -33,7 +34,6 @@ const buildSingleBoardView = (boardId) => {
         domString += '<button class="btn btn-light delete-single-pin"> <i class="fas fa-trash"></i> </button>';
         domString += '</div>';
       });
-      domString += '<button class="btn btn-light" id="back-button"> <i class="fas fa-arrow-circle-left"></i> </button>';
       domString += '</div>';
       pinsDiv.removeClass('hide');
       boardsDiv.addClass('hide');
