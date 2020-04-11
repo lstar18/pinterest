@@ -5,6 +5,23 @@ import boardData from '../../helpers/data/boardsData';
 import utils from '../../helpers/utils';
 import boardComponent from '../allBoards/boardMaker';
 import singleBoard from '../singleBoard/singleBoard';
+import newBoardComponent from '../newBoard/newBoard';
+
+const makeABoard = (e) => {
+  e.preventDefault();
+  const newBoard = {
+    name: $('#board-name').val(),
+    description: $('#board-description').val(),
+    uid: firebase.auth().currentUser.uid,
+  };
+  boardData.addBoard(newBoard)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildBoards();
+      utils.printToDom('addNewBoard', '');
+    })
+    .catch((err) => console.error('could not add board', err));
+};
 
 const completelyRemoveBoards = (e) => {
   const boardId = e.target.closest('.card').id;
@@ -32,16 +49,24 @@ const buildBoards = () => {
     .then((myBoards) => {
       let domString = '';
       domString += '<h2 class="text-center">My Boards</h2>';
+      domString += '<button class="btn btn-success" id="show-add-board-form"><i class="fas fa-plus"></i></button>';
       domString += '<div class="single-board d-flex flex-wrap justify-content-center">';
       myBoards.forEach((board) => {
         domString += boardComponent.boardMaker(board);
       });
       domString += '</div>';
       utils.printToDom('boards', domString);
-      $('body').on('click', '.delete-board-button', completelyRemoveBoards);
-      $('#boards').on('click', '.view-board-button', singleBoard.viewBoardEvent);
+      $('#show-add-board-form').click(newBoardComponent.showForm);
     })
     .catch((err) => console.error('get boards broke', err));
 };
 
-export default { displayBoardHeader, buildBoards, completelyRemoveBoards };
+const boardEvents = () => {
+  $('body').on('click', '.delete-board-button', completelyRemoveBoards);
+  $('#boards').on('click', '.view-board-button', singleBoard.viewBoardEvent);
+  $('body').on('click', '#board-creator-button', makeABoard);
+};
+
+export default {
+  displayBoardHeader, buildBoards, completelyRemoveBoards, boardEvents,
+};
