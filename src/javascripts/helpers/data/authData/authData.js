@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import boardsComponent from '../../../components/boards/boards';
+import singleBoardComponent from '../../../components/singleBoard/singleBoard';
 
 const authDiv = $('#auth');
 const board = $('#boards');
@@ -20,6 +21,7 @@ const checkLoginStatus = () => {
       addBoard.removeClass('hide');
       boardsComponent.buildBoards();
       boardsComponent.boardEvents();
+      singleBoardComponent.singleBoardEvents();
     } else {
       authDiv.removeClass('hide');
       header.removeClass('hide');
