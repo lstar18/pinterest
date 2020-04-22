@@ -7,6 +7,7 @@ import boardComponent from '../allBoards/boardMaker';
 import singleBoard from '../singleBoard/singleBoard';
 import newBoardComponent from '../newBoard/newBoard';
 
+// Function that allow you to create a board
 const makeABoard = (e) => {
   e.preventDefault();
   const newBoard = {
@@ -22,7 +23,7 @@ const makeABoard = (e) => {
     })
     .catch((err) => console.error('could not add board', err));
 };
-
+// Function that removes a board
 const completelyRemoveBoards = (e) => {
   const boardId = e.target.closest('.card').id;
   boardData.deleteBoard(boardId)
@@ -37,12 +38,12 @@ const completelyRemoveBoards = (e) => {
     })
     .catch((err) => console.error('remove board broke', err));
 };
-
+// function that allows the user to see the header of the page
 const displayBoardHeader = () => {
   const domString = '<h1> BOARDS </h1>';
   utils.printToDom('boards', domString);
 };
-
+// function grabs all board that belong to the current user and displays them
 const buildBoards = () => {
   const myUid = firebase.auth().currentUser.uid;
   boardData.getBoardsbyUid(myUid)
