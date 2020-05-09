@@ -3,10 +3,22 @@ import 'firebase/auth';
 import pinsData from '../../helpers/data/pinData';
 import boardData from '../../helpers/data/boardsData';
 import utils from '../../helpers/utils';
-import boardComponent from '../allBoards/boardMaker';
+import boardComponent from '../boardMaker/boardMaker';
 import singleBoard from '../singleBoard/singleBoard';
 import newBoardComponent from '../newBoard/newBoard';
 
+const updatePin = (e) => {
+  e.preventDefault();
+  const pinId = e.target.closest('.edit-pin-form').id;
+  const editedPin = $('#edit-board-id').val();
+  pinsData.updatePin(pinId, editedPin)
+    .then(() => {
+      utils.printToDom('edit-pin', '');
+      // eslint-disable-next-line no-use-before-define
+      buildBoards();
+    })
+    .catch((err) => console.error('could not update pin to board', err));
+};
 // Function that allow you to create a board
 const makeABoard = (e) => {
   e.preventDefault();
@@ -66,6 +78,7 @@ const boardEvents = () => {
   $('body').on('click', '.delete-board-button', completelyRemoveBoards);
   $('#boards').on('click', '.view-board-button', singleBoard.viewBoardEvent);
   $('body').on('click', '#board-creator-button', makeABoard);
+  $('body').on('click', '#edit-pin-button', updatePin);
 };
 
 export default {
