@@ -5,7 +5,7 @@ const showNewPin = (e) => {
   let domString = '';
   domString += '<h2 class="text-center"> New Pin </h2>';
   domString += '<form>';
-  domString += '<div class="form-group">';
+  domString += '<div class="form-group" data-id="pin-selected">';
   domString += '<label for="pin-url">Url for Pin</label>';
   domString += '<input type="text" class="form-control" id="pin-url">';
   domString += '</div>';
